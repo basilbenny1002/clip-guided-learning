@@ -87,7 +87,7 @@ out_pil = transforms.ToPILImage()(out_img)
 out_pil.save("results/unconstrained result.png")
 
 print("Calculating similarity of the unconstrained image")
-verify_img = preprocess(Image.open("unconstrained result.png")).unsqueeze(0).to(DEVICE)
+verify_img = preprocess(Image.open("results/unconstrained result.png")).unsqueeze(0).to(DEVICE)
 
 with torch.no_grad():
     v_img_feat = model.encode_image(verify_img)
