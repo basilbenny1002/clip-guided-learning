@@ -112,7 +112,7 @@ if best_image is not None:
 
     print("\nComparing the similarity")
 
-    verify_img = preprocess(Image.open("improved_potato.png")).unsqueeze(0).to(DEVICE)
+    verify_img = preprocess(Image.open("results/constrained result.png")).unsqueeze(0).to(DEVICE)
 
     with torch.no_grad():
         v_img_feat = model.encode_image(verify_img)
