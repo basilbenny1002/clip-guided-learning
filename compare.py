@@ -9,7 +9,7 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 RESULTS_FOLDER = "results"
 
 # Image file paths
-IMAGE = "actual image.png"
+IMAGE = os.path.join(RESULTS_FOLDER, "actual image.png")
 CONSTRAINED_IMAGE = os.path.join(RESULTS_FOLDER, "constrained result.png")
 UNCONSTRAINED_IMAGE = os.path.join(RESULTS_FOLDER, "unconstrained result.png")
 
