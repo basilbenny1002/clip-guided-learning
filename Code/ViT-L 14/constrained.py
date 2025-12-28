@@ -109,12 +109,10 @@ print(f"Optimization finished. Best Similarity Loss: {best_loss:.4f}")
 if best_image is not None:
     out_img = best_image.squeeze()
     out_pil = transforms.ToPILImage()(out_img)
-    # CHANGED: Updated filename to include model name (replaced slash with dash)
     out_pil.save("results/constrained result ViT-L-14.png")
 
     print("\nComparing the similarity")
 
-    # CHANGED: Updated filename here as well to match
     verify_img = preprocess(Image.open("results/constrained result ViT-L-14.png")).unsqueeze(0).to(DEVICE)
 
     with torch.no_grad():
