@@ -60,7 +60,7 @@ def generate_unconstrained_image(prompt, model_name="RN50"):
                 raw_sim = torch.cosine_similarity(raw_emb, text_emb).item()
              print(f"Step {step} | Loss: {final_loss.item():.4f} | Current Raw Score: {raw_sim:.4f}")
 
-    filename = os.path.join("results", f"unconstrained_{model_name}_{prompt.replace(' ', '_')}.png")
+    filename = os.path.join("results", "RN50", f"unconstrained_{model_name}_{prompt.replace(' ', '_')}.png")
     out_img = image.detach().cpu().squeeze()
     out_pil = transforms.ToPILImage()(out_img)
     out_pil.save(filename)

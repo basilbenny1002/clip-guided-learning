@@ -93,7 +93,7 @@ def generate_constrained_image(prompt, model_name="RN50"):
             print(f"Step {step} | Sim Loss: {current_sim_loss:.4f} | TV Loss: {tv_loss.item():.4f}")
             
     if best_image is not None:
-        filename = os.path.join("results", f"constrained_{model_name}_{prompt.replace(' ', '_')}.png")
+        filename = os.path.join("results", "RN50", f"constrained_{model_name}_{prompt.replace(' ', '_')}.png")
         out_img = best_image.squeeze()
         out_pil = transforms.ToPILImage()(out_img)
         out_pil.save(filename)
