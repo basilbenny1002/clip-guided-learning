@@ -20,18 +20,32 @@ This repository contains two approaches to image generation guided by text descr
 
 ## Key Findings
 
-The comparison between these two approaches reveals a critical insight: **AI models don't rely primarily on actual visual parameters—they exploit texture bias and statistical patterns**. 
+The comparison between these two approaches reveals a critical insight: **AI models don't rely primarily on actual visual parameters they exploit texture bias and statistical patterns**.
 
 - The unconstrained version achieves high similarity scores with pure noise because it optimizes purely for feature alignment
 - The constrained version, with realistic visual regularization, has lower similarity scores, suggesting texture patterns matter more to the model than semantic visual content
 
-## Files
+This experiment was conducted across multiple CLIP models (RN50, ViT-B, ViT-L 14) to observe the differences in how they perceive and optimize these patterns.
 
-- **`unconstrained.py`** - Unconstrained image generation script
-- **`constrained.py`** - Constrained image generation with TV loss and augmentations
-- **`unconstrained.ipynb`** - Jupyter notebook version for Google Colab
-- **`constrained.ipynb`** - Jupyter notebook version for Google Colab
-- **`results/`** - Generated images (example results from "A cute golden retriever" prompt)
+## Files Structure
+
+The project is organized by format (Code or Notebooks) and then by Model Architecture:
+
+```
+Code/
+    RN50/
+    ViT-B/
+    ViT-L 14/
+Notebooks/
+    RN50/
+    ViT-B/
+    ViT-L 14/
+results/
+```
+
+- **`Code/`** - Python scripts for running locally
+- **`Notebooks/`** - Jupyter notebooks for interactive running (e.g., VS Code, Colab)
+- **`results/`** - Generated images organized by model name
 
 ## Requirements
 
@@ -48,46 +62,45 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Running Locally
+You can choose to run the experiments using either the Python scripts or Jupyter Notebooks. Navigate to the specific model folder you wish to test.
 
-**Unconstrained version:**
+### Running Python Scripts
+
+1. Navigate to the desired model folder inside `Code/`.
+2. Run the constrained or unconstrained script.
+
+Example for RN50:
 ```bash
+cd Code/RN50
+python constrained.py
+# or
 python unconstrained.py
 ```
 
-**Constrained version:**
-```bash
-python constrained.py
-```
+The scripts will generate images for a list of prompts and save them to the `results/` folder under the respective model name.
 
-Both scripts will generate an image and save it to the `results/` folder with a similarity score.
+### Running Notebooks
 
-### Running on Google Colab
-
-1. Open [Google Colab](https://colab.research.google.com/)
-2. Click **File → Open notebook**
-3. Go to the **GitHub** tab
-4. Enter: `basilbenny1002/clip_guided_learning`
-5. Open either `unconstrained.ipynb` or `constrained.ipynb`
-6. Run the cells sequentially (the first cell installs required packages)
-7. Check the results folder for generated images
+1. Open the notebooks in `Notebooks/[Model_Name]/` using VS Code or Jupyter.
+2. Run the cells sequentially.
 
 ## Customization
 
-Edit the `TEXT_PROMPT` variable in either script or notebook to generate images for different text descriptions:
+You can edit the `TEXT_PROMPTS` list in the scripts or notebooks to generate images for different text descriptions:
 
 ```python
-TEXT_PROMPT = "Your description here"
+TEXT_PROMPTS = [
+    "A cute golden retriever",
+    "A snow-covered mountain peak",
+    "A bright red tomato"
+]
 ```
 
 Adjust `LEARNING_RATE`, `STEPS`, and `TV_WEIGHT` (constrained only) to fine-tune the generation process.
 
 ## Results
 
-Example results are provided in the `results/` folder, generated from the prompt: **"A cute golden retriever"**
-
-- **unconstrained result.png** - High similarity but visually random noise
-- **constrained result.png** - Lower similarity but with visible visual patterns
+All generated outputs are saved in the `results/` folder, organized by the model architecture used.
 
 ## References
 
