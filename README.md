@@ -105,3 +105,4 @@ All generated outputs are saved in the `results/` folder, organized by the model
 ## References
 
 - CLIP: [Learning Transferable Models for Computational Linguistics](https://openai.com/research/clip)
+- Read More: [Why AI Thinks This Static Is a Dog](https://medium.com/@basilbenny1002/why-ai-thinks-this-static-is-a-dog-exploring-the-semantic-gap-in-vision-models-fd75085de29e)
